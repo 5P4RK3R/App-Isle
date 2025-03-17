@@ -38,7 +38,7 @@ class AppLayout(Row):
             on_click=self.toggle_nav_rail,
         )
         self.sidebar = Sidebar(self, self.store, page)
-        self.members_view = Text("members view")
+        self.members_view = Text("Hello Admin")
         self.all_boards_view = Column(
             [
                 Row(
@@ -52,7 +52,7 @@ class AppLayout(Row):
                             TextButton(
                                 "Add Apps",
                                 icon=icons.ADD,
-                                on_click=self.app.add_board,
+                                # on_click=self.app.add_board,
                                 style=ButtonStyle(
                                     bgcolor={
                                         "": colors.BLUE_200,
@@ -65,22 +65,22 @@ class AppLayout(Row):
                         ),
                     ]
                 ),
-                Row(
-                    [
-                        TextField(
-                            hint_text="Search all boards",
-                            autofocus=False,
-                            content_padding=padding.only(left=10),
-                            width=200,
-                            height=40,
-                            text_size=12,
-                            border_color=colors.BLACK26,
-                            focused_border_color=colors.BLUE_ACCENT,
-                            suffix_icon=icons.SEARCH,
-                        )
-                    ]
-                ),
-                Row([Text("No Boards to Display")]),
+                # Row(
+                #     [
+                #         TextField(
+                #             hint_text="Search all boards",
+                #             autofocus=False,
+                #             content_padding=padding.only(left=10),
+                #             width=200,
+                #             height=40,
+                #             text_size=12,
+                #             border_color=colors.BLACK26,
+                #             focused_border_color=colors.BLUE_ACCENT,
+                #             suffix_icon=icons.SEARCH,
+                #         )
+                #     ]
+                # ),
+                # Row([Text("No Boards to Display")]),
             ],
             expand=True,
         )
@@ -141,31 +141,31 @@ class AppLayout(Row):
                                 expand=True,
                                 on_click=self.board_click,
                             ),
-                            Container(
-                                content=PopupMenuButton(
-                                    items=[
-                                        PopupMenuItem(
-                                            content=Text(
-                                                value="Delete",
-                                                style="labelMedium",
-                                                text_align="center",
-                                            ),
-                                            on_click=self.app.delete_board,
-                                            data=b,
-                                        ),
-                                        PopupMenuItem(),
-                                        PopupMenuItem(
-                                            content=Text(
-                                                value="Archive",
-                                                style="labelMedium",
-                                                text_align="center",
-                                            ),
-                                        ),
-                                    ]
-                                ),
-                                padding=padding.only(right=-10),
-                                border_radius=border_radius.all(3),
-                            ),
+                            # Container(
+                            #     content=PopupMenuButton(
+                            #         items=[
+                            #             # PopupMenuItem(
+                            #             #     content=Text(
+                            #             #         value="Delete",
+                            #             #         style="labelMedium",
+                            #             #         text_align="center",
+                            #             #     ),
+                            #             #     on_click=self.app.delete_board,
+                            #             #     data=b,
+                            #             # ),
+                            #             PopupMenuItem(),
+                            #             PopupMenuItem(
+                            #                 content=Text(
+                            #                     value="Archive",
+                            #                     style="labelMedium",
+                            #                     text_align="center",
+                            #                 ),
+                            #             ),
+                            #         ]
+                            #     ),
+                            #     padding=padding.only(right=-10),
+                            #     border_radius=border_radius.all(3),
+                            # ),
                         ],
                         alignment="spaceBetween",
                     ),

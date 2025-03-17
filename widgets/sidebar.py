@@ -28,16 +28,16 @@ class Sidebar(UserControl):
         self.nav_rail_visible = True
         self.top_nav_items = [
             NavigationRailDestination(
-                label_content=Text("Boards"),
-                label="Boards",
-                icon=icons.BOOK_OUTLINED,
-                selected_icon=icons.BOOK_OUTLINED
+                label_content=Text("Home"),
+                label="Home",
+                icon=icons.HOME,
+                selected_icon=icons.HOME_FILLED
             ),
             NavigationRailDestination(
-                label_content=Text("Members"),
-                label="Members",
-                icon=icons.PERSON,
-                selected_icon=icons.PERSON
+                label_content=Text("Add Apps"),
+                label="Add Apps",
+                icon=icons.ADD,
+                selected_icon=icons.ADD
             ),
 
         ]
@@ -63,9 +63,9 @@ class Sidebar(UserControl):
     def build(self):
         self.view = Container(
             content=Column([
-                Row([
-                    Text("Workspace"),
-                ], alignment="spaceBetween"),
+                # Row([
+                #     Text("Workspace"),
+                # ], alignment="spaceBetween"),
                 # divider
                 Container(
                     bgcolor=colors.BLACK26,

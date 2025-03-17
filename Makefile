@@ -7,6 +7,7 @@ OUTPUT_DIR = output
 BROWSER = "Arc"
 URL = http://localhost:8080
 APP_NAME ?= myapp
+PLATFORM ?= ipa
 
 # Define targets
 .PHONY: all install clean run
@@ -28,8 +29,16 @@ clean:
 	find . -type f -name "log.html" -delete
 	find . -type f -name "report.html" -delete
 	find . -type f -name "output.xml" -delete
-	find . -type d -name "__pycache__" -delete
+	find . -type d -name '__pycache__' -exec rm -rf {} +
+	find . -type d -name 'output' -exec rm -rf {} +
 
+
+push:
+	git pull
+	git commit -m $(msg)
+	git push
+	git pull
+	
 # Run the server
 run:
 	mkdir -p $(OUTPUT_DIR)
@@ -41,6 +50,9 @@ ui:
 server:
 	mkdir -p $(OUTPUT_DIR)
 	python3 manage.py runserver
+
+build:
+	flet build $(PLATFORM) --output $(OUTPUT_DIR)/$(PLATFORM)/
 	
 automate:
 	ansible-playbook -i ansible/inventory/main.ini ansible/main.yml
@@ -48,6 +60,14 @@ automate:
 # Rule to start a new Django app
 app:
 	python3 manage.py startapp $(APP_NAME)
+
+doc:
+	mkdocs serve
+	chmod +x doc.sh
+	./doc.sh html
+
+doc_build:
+	mkdocs build
 
 # If you want to provide help or instructions
 help:
